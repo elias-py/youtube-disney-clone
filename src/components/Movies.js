@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from "react-router-dom"
 import { selectMovies } from "../features/movie/movieSlice"
 import { useSelector } from "react-redux"
 
@@ -12,9 +13,44 @@ export default function Movies() {
         <Container>
             <h4>Reccomended for You</h4>
             <Content>
-                { movies && movies.map((movie) => (
+                { movies && movies.slice(0,4).map((movie) => (
                     <Wrap key={movie.id}>
-                        <img src={movie.cardImg} alt="" />
+                        <Link to={`/detail/${movie.id}`}>
+                            <img src={movie.cardImg} alt="" />
+                        </Link>
+                    </Wrap>
+                ))
+                }
+            </Content>
+            <h4>Top in your Country</h4>
+            <Content>
+                { movies && movies.slice(4,8).map((movie) => (
+                    <Wrap key={movie.id}>
+                        <Link to={`/detail/${movie.id}`}>
+                            <img src={movie.cardImg} alt="" />
+                        </Link>
+                    </Wrap>
+                ))
+                }
+            </Content>
+            <h4>New Season</h4>
+            <Content>
+                { movies && movies.slice(8,12).map((movie) => (
+                    <Wrap key={movie.id}>
+                        <Link to={`/detail/${movie.id}`}>
+                            <img src={movie.cardImg} alt="" />
+                        </Link>
+                    </Wrap>
+                ))
+                }
+            </Content>
+            <h4>Most Viewed</h4>
+            <Content>
+                { movies && movies.slice(12,16).map((movie) => (
+                    <Wrap key={movie.id}>
+                        <Link to={`/detail/${movie.id}`}>
+                            <img src={movie.cardImg} alt="" />
+                        </Link>
                     </Wrap>
                 ))
                 }
